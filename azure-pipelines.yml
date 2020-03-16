@@ -14,6 +14,11 @@ variables:
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -28,10 +33,4 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: AzureFunctionApp@1 # Add this at the end of your file
-  inputs:
-    azureSubscription: $(azureSubscription)
-    appType: functionAppLinux
-    appName: $(appName)
-    package: $(System.ArtifactsDirectory)/**/*.zip
 
